@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Heartfelt Apology ❤️</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Background particles -->
+    <div id="particles"></div>
+    
+    <!-- Music Player -->
+    <div class="music-player" id="musicPlayer">
+        <div class="music-controls">
+            <button class="music-btn" id="playPauseBtn" title="Play/Pause Music">
+                <i class="fas fa-play" id="playIcon"></i>
+                <i class="fas fa-pause" id="pauseIcon" style="display: none;"></i>
+            </button>
+            <div class="volume-control">
+                <button class="music-btn volume-btn" id="volumeBtn" title="Volume">
+                    <i class="fas fa-volume-up" id="volumeIcon"></i>
+                </button>
+                <div class="volume-slider-container">
+                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50">
+                </div>
+            </div>
+            <div class="song-info">
+                <div class="song-title" id="songTitle">♫ Our Song ♫</div>
+            </div>
+        </div>
+        <div class="music-progress">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="time-info">
+                <span id="currentTime">0:00</span>
+                <span id="totalTime">0:00</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Audio Elements -->
+    <audio id="backgroundMusic" loop preload="auto" autoplay>
+        <source src="music/tune.mp3" type="audio/mpeg">
+        <source src="music/tune.ogg" type="audio/ogg">
+        <!-- Fallback to a royalty-free online source -->
+        <source src="https://www.soundjay.com/misc/sounds/romantic-music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <!-- Celebration Music -->
+    <audio id="celebrationMusic" loop preload="auto">
+        <source src="music/happy.mp3" type="audio/mpeg">
+        <source src="music/happy.ogg" type="audio/ogg">
+        <!-- Fallback to a royalty-free online source -->
+        <source src="https://www.soundjay.com/misc/sounds/happy-music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <!-- Floating hearts -->
+    <div class="floating-hearts">
+        <div class="heart">❤️</div>
+        <div class="heart">💕</div>
+        <div class="heart">💖</div>
+        <div class="heart">💝</div>
+        <div class="heart">🌹</div>
+    </div>
+
+    <!-- Main container -->
+    <div class="container">
+        <!-- Header section -->
+        <header class="header">
+            <h1 class="title fade-in">I'm Sorry, My Love</h1>
+            <p class="subtitle fade-in-delayed">Please forgive me... 💔</p>
+        </header>
+
+        <!-- Interactive message section -->
+        <section class="message-section">
+            <div class="message-box" id="messageBox">
+                <p class="message-text" id="messageText">
+                     My heartfelt apology...
+                </p>
+            </div>
+            
+            <!-- Interactive heart button -->
+            <div class="heart-button-container">
+                <button class="heart-button" id="heartButton">
+                    <span class="heart-icon">💖</span>
+                    <span class="button-text">Click Me</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Apology stages -->
+        <section class="apology-stages" id="apologyStages">
+            <div class="stage" id="stage1">
+                <h2>I messed up... 😔</h2>
+                <p>I know I hurt you, and I'm truly sorry. Your feelings matter more than anything to me.</p>
+                <button class="next-button" onclick="showNextStage(2)">Continue 🟢</button>
+            </div>
+            
+            <div class="stage" id="stage2">
+                <h2>I take full responsibility 🙏</h2>
+                <p>I won't make excuses. What I did was wrong, and I understand why you're upset. You have every right to feel the way you do.</p>
+                <button class="next-button" onclick="showNextStage(3)">Continue 🟢</button>
+            </div>
+            
+            <div class="stage" id="stage3">
+                <h2>You mean everything to me 💕</h2>
+                <p>I love you more than words can express. You bring so much joy, laughter, and love into my life. I never want to lose what we have.</p>
+                <button class="next-button" onclick="showNextStage(4)">Continue 🟢</button>
+            </div>
+            
+            <div class="stage" id="stage4">
+                <h2>I promise to do better ✨</h2>
+                <p>I will learn from this mistake and work every day to be the partner you deserve. Your happiness is my priority.</p>
+                <button class="next-button" onclick="showNextStage(5)">Continue🟢</button>
+            </div>
+            
+            <div class="stage" id="stage5">
+                <h2>Will you forgive me? 🥺</h2>
+                <p>I know I don't deserve it, but I'm hoping you'll give me another chance to make things right. I love you so much.</p>
+                <div class="response-buttons">
+                    <button class="response-button yes-button" id="yesButton">Yes, I forgive you ❤️</button>
+                    <button class="response-button maybe-button" id="maybeButton">I need time to think 🤔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final message -->
+        <section class="final-section" id="finalSection">
+            <div class="celebration" id="celebration">
+                <h1>Thank you! ❤️✨</h1>
+                <p>You've made me the happiest person in the world! I promise to cherish you always.</p>
+                
+                <!-- Photo Slideshow -->
+                <div class="photo-slideshow" id="photoSlideshow">
+                    <div class="photo-frame">
+                        <img id="currentPhoto" src="" alt="Our memories together" />
+                        <div class="photo-overlay">
+                            <div class="photo-caption" id="photoCaption">Our beautiful memories together 💕</div>
+                        </div>
+                    </div>
+                    <div class="slideshow-controls">
+                        <button class="slide-btn" id="prevBtn" title="Previous photo">❮</button>
+                        <div class="slide-indicators" id="slideIndicators"></div>
+                        <button class="slide-btn" id="nextBtn" title="Next photo">❯</button>
+                    </div>
+                    <div class="slideshow-timer">
+                        <div class="timer-bar" id="timerBar"></div>
+                    </div>
+                </div>
+                
+                <div class="celebration-hearts">
+                    <span>💖</span><span>💕</span><span>💝</span><span>🌹</span><span>✨</span>
+                </div>
+            </div>
+            
+            <div class="understanding" id="understanding">
+                <h2>I understand 💙</h2>
+                <p>Take all the time you need. I'll be here waiting, and I'll keep working to earn your forgiveness.</p>
+                <div class="understanding-message">
+                    <p class="emotional-text">😢 I'm heartbroken but I respect your decision. You mean the world to me, and I'll wait as long as it takes...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive elements -->
+        <div class="interactive-elements">
+            <div class="click-for-hearts" id="clickArea">
+                <p>💫 Click anywhere for magical hearts! 💫</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Heart explosion effects -->
+    <div id="heartExplosion"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
